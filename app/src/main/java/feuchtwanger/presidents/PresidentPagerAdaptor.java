@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class PresidentPagerAdaptor extends PagerAdapter {
 
     private PresidentList presidents;
@@ -21,10 +23,18 @@ public class PresidentPagerAdaptor extends PagerAdapter {
         TextView name = (TextView) view.findViewById(R.id.name); //There's no method "findViewById"
         //in PagerAdaptor
         TextView number = (TextView) view.findViewById(R.id.number);
+        TextView tookOffice = (TextView) view.findViewById(R.id.tookOffice);
+        TextView leftOffice = (TextView) view.findViewById(R.id.leftOffice);
+        TextView party = (TextView) view.findViewById(R.id.party);
+        TextView life = (TextView) view.findViewById(R.id.life);
 
         Presidents president = presidents.get(position);
         name.setText(president.getPresident());
         number.setText(String.valueOf(president.getNumber()));
+        tookOffice.setText(president.getTookOffice());
+        leftOffice.setText(president.getLeftOffice());
+        party.setText(president.getParty());
+        life.setText(president.getBirthYear() + "-" + president.getDeathYear());
 
         container.addView(view);
         return view;

@@ -11,12 +11,13 @@ import android.view.ViewGroup;
  * Created by student1 on 10/22/2015.
  */
 public class PresidentAdaptor extends RecyclerView.Adapter<PresidentViewHolder> {
-    private PresidentList presidents;
+    private Presidents[] presidents;
 
-    public PresidentAdaptor(PresidentList presidents){
+    public PresidentAdaptor(Presidents[] presidents){
         this.presidents = presidents;
     }
 
+    //The next two methods create the president and bind it there
     @Override
     public PresidentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).
@@ -25,14 +26,16 @@ public class PresidentAdaptor extends RecyclerView.Adapter<PresidentViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(final PresidentViewHolder holder, int position) {
-        holder.bind(presidents.get(position));
+    public void onBindViewHolder(final PresidentViewHolder holder, final int position) {
+        holder.bind(presidents[position]);
 
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Context context = holder.itemView.getContext();
                 Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("PRESIDENTS", presidents);
+                intent.putExtra("POSITION", position);
                 context.startActivity(intent);
             }
         });
@@ -40,6 +43,6 @@ public class PresidentAdaptor extends RecyclerView.Adapter<PresidentViewHolder> 
 
     @Override
     public int getItemCount() {
-        return presidents.size();
+        return presidents.length;
     }
 }

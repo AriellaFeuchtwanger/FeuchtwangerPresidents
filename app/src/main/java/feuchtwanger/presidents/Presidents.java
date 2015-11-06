@@ -1,6 +1,8 @@
 package feuchtwanger.presidents;
 
-public class Presidents {
+import java.io.Serializable;
+
+public class Presidents implements Serializable{
 
     private int number;
     private String president;

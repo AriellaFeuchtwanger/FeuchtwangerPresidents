@@ -4,15 +4,16 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
 public class PresidentPagerAdaptor extends PagerAdapter {
 
-    private PresidentList presidents;
+    private Presidents[] presidents;
 
-    PresidentPagerAdaptor(PresidentList presidents){
+    PresidentPagerAdaptor(Presidents[] presidents){
         this.presidents = presidents;
     }
     @Override
@@ -23,16 +24,17 @@ public class PresidentPagerAdaptor extends PagerAdapter {
         TextView name = (TextView) view.findViewById(R.id.name); //There's no method "findViewById"
         //in PagerAdaptor
         TextView number = (TextView) view.findViewById(R.id.number);
-        TextView tookOffice = (TextView) view.findViewById(R.id.tookOffice);
-        TextView leftOffice = (TextView) view.findViewById(R.id.leftOffice);
+        TextView office = (TextView) view.findViewById(R.id.office);
         TextView party = (TextView) view.findViewById(R.id.party);
         TextView life = (TextView) view.findViewById(R.id.life);
+        ImageView image = (ImageView) view.findViewById(R.id.image);
 
-        Presidents president = presidents.get(position);
+        Presidents president = presidents[position];
+
+        image.setImageDrawable();
         name.setText(president.getPresident());
         number.setText(String.valueOf(president.getNumber()));
-        tookOffice.setText(president.getTookOffice());
-        leftOffice.setText(president.getLeftOffice());
+        office.setText(president.getTookOffice() + "-" + president.getLeftOffice());
         party.setText(president.getParty());
         life.setText(president.getBirthYear() + "-" + president.getDeathYear());
 
@@ -47,7 +49,7 @@ public class PresidentPagerAdaptor extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return presidents.size();
+        return presidents.length;
     }
 
     @Override

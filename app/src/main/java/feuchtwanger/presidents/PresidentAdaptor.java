@@ -12,9 +12,10 @@ import android.view.ViewGroup;
  */
 public class PresidentAdaptor extends RecyclerView.Adapter<PresidentViewHolder> {
     private Presidents[] presidents;
-
-    public PresidentAdaptor(Presidents[] presidents){
+    private int[] pics;
+    public PresidentAdaptor(Presidents[] presidents, int[] pics){
         this.presidents = presidents;
+        this.pics = pics;
     }
 
     //The next two methods create the president and bind it there
@@ -36,6 +37,7 @@ public class PresidentAdaptor extends RecyclerView.Adapter<PresidentViewHolder> 
                 Intent intent = new Intent(context, DetailActivity.class);
                 intent.putExtra("PRESIDENTS", presidents);
                 intent.putExtra("POSITION", position);
+                intent.putExtra("IMAGES", pics);
                 context.startActivity(intent);
             }
         });

@@ -1,5 +1,6 @@
 package feuchtwanger.presidents;
 
+import android.graphics.drawable.Drawable;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +13,14 @@ import org.w3c.dom.Text;
 public class PresidentPagerAdaptor extends PagerAdapter {
 
     private Presidents[] presidents;
+    private int[] pics;
 
-    PresidentPagerAdaptor(Presidents[] presidents){
+    PresidentPagerAdaptor(Presidents[] presidents, int[] pics)
+    {
         this.presidents = presidents;
+        this.pics = pics;
     }
+
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
 
@@ -30,8 +35,9 @@ public class PresidentPagerAdaptor extends PagerAdapter {
         ImageView image = (ImageView) view.findViewById(R.id.image);
 
         Presidents president = presidents[position];
-
-        image.setImageDrawable();
+        int picNumber = president.getNumber();
+        picNumber-=1;
+        image.setImageResource(pics[picNumber]);
         name.setText(president.getPresident());
         number.setText(String.valueOf(president.getNumber()));
         office.setText(president.getTookOffice() + "-" + president.getLeftOffice());

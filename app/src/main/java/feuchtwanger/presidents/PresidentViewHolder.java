@@ -2,18 +2,19 @@ package feuchtwanger.presidents;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class PresidentViewHolder extends RecyclerView.ViewHolder{
 
-    private TextView name;
+    private ImageView image;
 
     public PresidentViewHolder (View itemView){
         super(itemView);
-        name = (TextView) itemView.findViewById(R.id.name);
+        image = (ImageView) itemView.findViewById(R.id.image);
     }
 
-    public void bind(Presidents president){
-        name.setText(president.getPresident());
+    public void bind(int president){
+        image.setImageResource(president);
     }
 }

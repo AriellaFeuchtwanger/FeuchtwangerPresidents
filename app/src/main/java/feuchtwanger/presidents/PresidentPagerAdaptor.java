@@ -40,9 +40,14 @@ public class PresidentPagerAdaptor extends PagerAdapter {
         image.setImageResource(pics[picNumber]);
         name.setText(president.getPresident());
         number.setText(String.valueOf(president.getNumber()));
-        office.setText(president.getTookOffice() + "-" + president.getLeftOffice());
+        office.setText(president.getTookOffice() + " - " + president.getLeftOffice());
         party.setText(president.getParty());
-        life.setText(president.getBirthYear() + "-" + president.getDeathYear());
+        if(president.getDeathYear() == null){
+            life.setText(president.getBirthYear() + " - present");
+        } else{
+            life.setText(president.getBirthYear() + " - " + president.getDeathYear());
+        }
+
 
         container.addView(view);
         return view;

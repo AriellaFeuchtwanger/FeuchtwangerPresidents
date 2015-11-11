@@ -25,7 +25,7 @@ public class Presidents implements Serializable{
         return birthYear;
     }
 
-    public int getDeathYear() {
+    public Integer getDeathYear() {
         return deathYear;
     }
 

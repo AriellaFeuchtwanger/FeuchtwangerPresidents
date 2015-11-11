@@ -6,10 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 
-/**
- * Created by student1 on 10/22/2015.
- */
+
 public class PresidentAdaptor extends RecyclerView.Adapter<PresidentViewHolder> {
     private Presidents[] presidents;
     private int[] pics;
@@ -28,7 +27,7 @@ public class PresidentAdaptor extends RecyclerView.Adapter<PresidentViewHolder> 
 
     @Override
     public void onBindViewHolder(final PresidentViewHolder holder, final int position) {
-        holder.bind(presidents[position]);
+        holder.bind(pics[position]);
 
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override

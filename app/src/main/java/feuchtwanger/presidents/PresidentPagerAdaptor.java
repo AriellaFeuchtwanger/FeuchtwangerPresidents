@@ -1,6 +1,5 @@
 package feuchtwanger.presidents;
 
-import android.graphics.drawable.Drawable;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 public class PresidentPagerAdaptor extends PagerAdapter {
 
@@ -40,7 +38,11 @@ public class PresidentPagerAdaptor extends PagerAdapter {
         image.setImageResource(pics[picNumber]);
         name.setText(president.getPresident());
         number.setText(String.valueOf(president.getNumber()));
-        office.setText(president.getTookOffice() + " - " + president.getLeftOffice());
+        if(president.getLeftOffice() == null){
+            office.setText(president.getTookOffice() + " - present");
+        } else {
+            office.setText(president.getTookOffice() + " - " + president.getLeftOffice());
+        }
         party.setText(president.getParty());
         if(president.getDeathYear() == null){
             life.setText(president.getBirthYear() + " - present");

@@ -27,7 +27,7 @@ public class PresidentAdaptor extends RecyclerView.Adapter<PresidentViewHolder> 
 
     @Override
     public void onBindViewHolder(final PresidentViewHolder holder, final int position) {
-        holder.bind(pics[position]);
+        holder.bind(presidents[position]);
 
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override

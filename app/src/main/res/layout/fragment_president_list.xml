@@ -6,11 +6,10 @@
     android:layout_height="match_parent" android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-   <fragment
-       android:id="@+id/listFragment"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:name="feuchtwanger.presidents.PresidentListFragment"
-       tools:layout="@layout/fragment_president_list"/>
+    <android.support.v7.widget.RecyclerView
+        android:id = "@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        ></android.support.v7.widget.RecyclerView>
 
 </android.support.design.widget.CoordinatorLayout>

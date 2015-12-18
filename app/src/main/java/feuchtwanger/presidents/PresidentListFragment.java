@@ -3,6 +3,7 @@ package feuchtwanger.presidents;
 /**
  * Created by student1 on 12/10/2015.
  */
+import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -55,7 +56,8 @@ public class PresidentListFragment extends Fragment{
                 R.drawable.p37, R.drawable.p38, R.drawable.p39, R.drawable.p40, R.drawable.p41, R.drawable.p42,
                 R.drawable.p43, R.drawable.p44};
 
-        PresidentAdaptor adaptor = new PresidentAdaptor(presidents, pics);
+        OnPresidentSelectedListener listener = (OnPresidentSelectedListener) getActivity();
+        PresidentAdaptor adaptor = new PresidentAdaptor(presidents, pics, listener);
         recyclerView.setAdapter(adaptor);
     }
 }

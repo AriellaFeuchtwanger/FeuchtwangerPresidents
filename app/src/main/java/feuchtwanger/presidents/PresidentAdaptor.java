@@ -12,9 +12,12 @@ import android.widget.GridView;
 public class PresidentAdaptor extends RecyclerView.Adapter<PresidentViewHolder> {
     private Presidents[] presidents;
     private int[] pics;
-    public PresidentAdaptor(Presidents[] presidents, int[] pics){
+    private OnPresidentSelectedListener listener;
+
+    public PresidentAdaptor(Presidents[] presidents, int[] pics, OnPresidentSelectedListener listener){
         this.presidents = presidents;
         this.pics = pics;
+        this.listener = listener;
     }
 
     //The next two methods create the president and bind it there
@@ -29,15 +32,10 @@ public class PresidentAdaptor extends RecyclerView.Adapter<PresidentViewHolder> 
     public void onBindViewHolder(final PresidentViewHolder holder, final int position) {
         holder.bind(presidents[position]);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener(){
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Context context = holder.itemView.getContext();
-                Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("PRESIDENTS", presidents);
-                intent.putExtra("POSITION", position);
-                intent.putExtra("IMAGES", pics);
-                context.startActivity(intent);
+                listener.onSelect(presidents, position, pics);
             }
         });
     }

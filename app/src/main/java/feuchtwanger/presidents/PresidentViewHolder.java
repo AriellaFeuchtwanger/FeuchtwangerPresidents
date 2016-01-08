@@ -5,6 +5,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class PresidentViewHolder extends RecyclerView.ViewHolder{
 
  //   private ImageView image;
@@ -13,14 +16,12 @@ public class PresidentViewHolder extends RecyclerView.ViewHolder{
   //      super(itemView);
     //    image = (ImageView) itemView.findViewById(R.id.image);
     //}
-
-    private TextView name;
+    @Bind(R.id.name)
+    TextView name;
 
     public PresidentViewHolder(View itemView) {
         super(itemView);
-        //tell the class that holds the view that its connected to the president adapter
-        //the adapter connects to the president class
-        name = (TextView) itemView.findViewById(R.id.name);
+        ButterKnife.bind(this, itemView);
     }
 
     public void bind(Presidents president) {
